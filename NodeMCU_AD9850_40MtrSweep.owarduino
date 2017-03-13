@@ -1,0 +1,421 @@
+<OPEN WIRE DIAGRAM VERSION 1/>
+<UNIT Unit1>
+  <COMPONENT Arduino>
+    <X 1232/>
+    <INSTANCE object Arduino: TArduinoBoard
+  Modules.Items = <
+    item
+      _ = TArduinoESP8266WiFiModule
+    end
+    item
+      _ = TArduinoEEPROMModule
+    end\>
+  BoardType = 'NodeMCU ESP-12'
+  AnalogInputReference = Default
+  Serial.Items = <
+    item
+      _ = TArduinoESP8266HardwareSerial
+    end
+    item
+      _ = TArduinoESP8266HardwareSerial
+    end
+    item
+      _ = TArduinoESP8266HardwareSerial
+    end\>
+  AnalogInput.Items = <
+    item
+      _ = TArduinoESP8266AnalogInputChannel
+    end\>
+  SPI.InputPin.Form = __OpenWireRootUnit__
+  SPI.InputPin.SourcePins = (
+    __OpenWireRootUnit__.DisplaySSD1306.OutputPin)
+  Digital.Items = <
+    item
+      _ = TArduinoBasicDigitalPWMChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.DisplaySSD1306.ResetOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMI2C0InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.Synthesizer.WordLoadClockOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMI2C0InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.Synthesizer.ResetOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.Synthesizer.DataOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial1InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.DisplaySSD1306.DataCommandOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSPI0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSPI0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial2SPI0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial2InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.DisplaySSD1306.ChipSelectOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial0InterruptChannel
+      DigitalInputPin.Form = __OpenWireRootUnit__
+      DigitalInputPin.SourcePin = __OpenWireRootUnit__.Synthesizer.FrequencyUpdateOutputPin
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSerial0InterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end\>
+end
+/>
+    <Y 256/>
+  </COMPONENT>
+  <COMPONENT Synthesizer>
+    <X 864/>
+    <INSTANCE object Synthesizer: TArduinoAnalogDevicesAD9850Serial
+  ResetInputPin.Form = __OpenWireRootUnit__
+  ResetInputPin.SourcePins = (
+    __OpenWireRootUnit__.Inverter.OutputPin)
+  WordLoadClockOutputPin.Form = __OpenWireRootUnit__
+  WordLoadClockOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item1.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(I2C-SCL)[ 1 ].Digit' +
+        'alInputPin'))
+  FrequencyUpdateOutputPin.Form = __OpenWireRootUnit__
+  FrequencyUpdateOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item9.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(RX0)[ 9 ].DigitalIn' +
+        'putPin'))
+  ResetOutputPin.Form = __OpenWireRootUnit__
+  ResetOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item2.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(I2C-SDA)[ 2 ].Digit' +
+        'alInputPin'))
+  Frequency = 0.000000000000000000
+  DataOutputPin.Form = __OpenWireRootUnit__
+  DataOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item3.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital[ 3 ].DigitalInputPi' +
+        'n'))
+  Frequency = 0.000000000000000000
+  Phase = 0.000000000000000000
+end
+/>
+    <Y 688/>
+  </COMPONENT>
+  <COMPONENT BaseFrequency>
+    <X 496/>
+    <INSTANCE object BaseFrequency: TArduinoIntegerValue
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Integrate.ValueInputPin
+      '__OpenWireRootUnit__.Integrate.Value'))
+  Value = 7000000
+end
+/>
+    <Y 768/>
+  </COMPONENT>
+  <COMPONENT FormattedText>
+    <X 864/>
+    <INSTANCE object FormattedText: TArduinoFormattedText
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.DisplaySSD1306.InputPin)
+  Text = 'Sweep'#13#10'+%1KHz'#13#10'Frequency'#13#10'%0Hz'
+  Elements.Items = <
+    item
+      _ = TArduinoFormattedTextElementText
+      Name = 'Frequency'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePins = (
+        __OpenWireRootUnit__.Integrate.OutputPin)
+    end
+    item
+      _ = TArduinoFormattedTextElementInteger
+      Name = 'Offset'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePin = __OpenWireRootUnit__.SweepValue.OutputPin
+    end\>
+end
+/>
+    <Y 832/>
+  </COMPONENT>
+  <COMPONENT DisplaySSD1306>
+    <X 864/>
+    <INSTANCE object DisplaySSD1306: TArduinoDisplaySSD1306SPI
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePins = (
+    __OpenWireRootUnit__.FormattedText.OutputPin)
+  ResetOutputPin.Form = __OpenWireRootUnit__
+  ResetOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item0.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(LED)[ 0 ].DigitalIn' +
+        'putPin'))
+  Text.Size = 2
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.Arduino.SPI.InputPin)
+  ChipSelectOutputPin.Form = __OpenWireRootUnit__
+  ChipSelectOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item8.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(TX2)[ 8 ].DigitalIn' +
+        'putPin'))
+  DataCommandOutputPin.Form = __OpenWireRootUnit__
+  DataCommandOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Digital._Item4.DigitalInputPin
+      
+        '__OpenWireRootUnit__.Arduino.Digital.Digital(TX1)[ 4 ].DigitalIn' +
+        'putPin'))
+end
+/>
+    <Y 992/>
+  </COMPONENT>
+  <COMPONENT UpDownCounter>
+    <X 864/>
+    <INSTANCE object UpDownCounter: TArduinoUpDownCounter
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.ScanStep.InputPin
+    __OpenWireRootUnit__.CompareInt.InputPin
+    __OpenWireRootUnit__.Compare0.InputPin)
+  UpInputPin.Form = __OpenWireRootUnit__
+  UpInputPin.SourcePins = (
+    __OpenWireRootUnit__.And1.OutputPin)
+  DownInputPin.Form = __OpenWireRootUnit__
+  DownInputPin.SourcePins = (
+    __OpenWireRootUnit__.And2.OutputPin)
+end
+/>
+    <Y 544/>
+  </COMPONENT>
+  <COMPONENT Integrate>
+    <X 672/>
+    <INSTANCE object Integrate: TArduinoIntegerAddValue
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.FormattedText.Elements._Item0.InputPin
+      '__OpenWireRootUnit__.FormattedText.Elements.Frequency.InputPin')
+    (
+      __OpenWireRootUnit__.Synthesizer.FrequencyInputPin
+      '__OpenWireRootUnit__.Synthesizer.Frequency'))
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.ScanStep.OutputPin
+  Value = 14000000
+end
+/>
+    <Y 752/>
+  </COMPONENT>
+  <COMPONENT ScanStep>
+    <X 496/>
+    <INSTANCE object ScanStep: TArduinoIntegerMultiplyByValue
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.Integrate.InputPin)
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.UpDownCounter.OutputPin
+  Value = 1000
+end
+/>
+    <Y 720/>
+  </COMPONENT>
+  <COMPONENT CompareInt>
+    <X 640/>
+    <INSTANCE object CompareInt: TArduinoIntegerCompareValue
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.UpDownCounter.OutputPin
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.SRFlipFlop.ResetInputPin)
+  CompareType = ctBiggerOrEqual
+end
+/>
+    <Y 336/>
+  </COMPONENT>
+  <COMPONENT And1>
+    <X 640/>
+    <INSTANCE object And1: TArduinoBooleanAnd
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.UpDownCounter.UpInputPin)
+  InputPins.Form = __OpenWireRootUnit__
+  InputPins.Pins = (
+    __OpenWireRootUnit__.SRFlipFlop.OutputPin
+    __OpenWireRootUnit__.Timer1.OutputPin)
+end
+/>
+    <Y 512/>
+  </COMPONENT>
+  <COMPONENT And2>
+    <X 640/>
+    <INSTANCE object And2: TArduinoBooleanAnd
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.UpDownCounter.DownInputPin)
+  InputPins.Form = __OpenWireRootUnit__
+  InputPins.Pins = (
+    __OpenWireRootUnit__.SRFlipFlop.InvertedOutputPin
+    __OpenWireRootUnit__.Timer1.OutputPin)
+end
+/>
+    <Y 592/>
+  </COMPONENT>
+  <COMPONENT SRFlipFlop>
+    <X 864/>
+    <INSTANCE object SRFlipFlop: TArduinoSRFlipFlop
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.And1.InputPins._Pin0
+      '__OpenWireRootUnit__.And1.InputPins.Pin [0]'))
+  InvertedOutputPin.Form = __OpenWireRootUnit__
+  InvertedOutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.And2.InputPins._Pin0
+      '__OpenWireRootUnit__.And2.InputPins.Pin [0]'))
+  SetInputPin.Form = __OpenWireRootUnit__
+  SetInputPin.SourcePins = (
+    __OpenWireRootUnit__.Compare0.OutputPin)
+  ResetInputPin.Form = __OpenWireRootUnit__
+  ResetInputPin.SourcePins = (
+    __OpenWireRootUnit__.CompareInt.OutputPin)
+end
+/>
+    <Y 384/>
+  </COMPONENT>
+  <COMPONENT Compare0>
+    <X 640/>
+    <INSTANCE object Compare0: TArduinoIntegerCompareValue
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.UpDownCounter.OutputPin
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.SRFlipFlop.SetInputPin)
+  CompareType = ctSmallerOrEqual
+end
+/>
+    <Y 400/>
+  </COMPONENT>
+  <COMPONENT Timer1>
+    <X 336/>
+    <INSTANCE object Timer1: TArduinoTimer
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.And2.InputPins._Pin1
+      '__OpenWireRootUnit__.And2.InputPins.Pin [1]')
+    (
+      __OpenWireRootUnit__.And1.InputPins._Pin1
+      '__OpenWireRootUnit__.And1.InputPins.Pin [1]')
+    __OpenWireRootUnit__.Inverter.InputPin)
+  Interval = 10
+  StartInputPin.Form = __OpenWireRootUnit__
+  StartInputPin.SourcePins = (
+    __OpenWireRootUnit__.ClockGenerator1.OutputPin)
+end
+/>
+    <Y 432/>
+  </COMPONENT>
+  <COMPONENT Inverter>
+    <X 528/>
+    <INSTANCE object Inverter: TArduinoBooleanInverter
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.Synthesizer.ResetInputPin)
+  InputPin.Form = __OpenWireRootUnit__
+  InputPin.SourcePin = __OpenWireRootUnit__.Timer1.OutputPin
+end
+/>
+    <Y 848/>
+  </COMPONENT>
+  <COMPONENT ClockGenerator1>
+    <X 256/>
+    <INSTANCE object ClockGenerator1: TArduinoClockGenerator
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    __OpenWireRootUnit__.Timer1.StartInputPin)
+  Frequency = 20.000000000000000000
+end
+/>
+    <Y 528/>
+  </COMPONENT>
+  <COMPONENT SweepValue>
+    <X 336/>
+    <INSTANCE object SweepValue: TArduinoIntegerValue
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.CompareInt.ValueInputPin
+      '__OpenWireRootUnit__.CompareInt.Value')
+    (
+      __OpenWireRootUnit__.FormattedText.Elements._Item1.InputPin
+      '__OpenWireRootUnit__.FormattedText.Elements.Offset.InputPin'))
+  Value = 300
+end
+/>
+    <Y 352/>
+  </COMPONENT>
+    <SELECTION Inverter/>
+    <BINDINGS object TOWPinBindingManager
+  Bindings = (
+    Synthesizer
+    (
+      Frequency
+      TOWSingleSinkPinBinding
+      'Frequency'
+      __OpenWireRootUnit__.Integrate.OutputPin)
+    Integrate
+    (
+      Value
+      TOWIntegerSinkPinBinding
+      'Value'
+      __OpenWireRootUnit__.BaseFrequency.OutputPin)
+    CompareInt
+    (
+      Value
+      TOWIntegerSinkPinBinding
+      'Value'
+      __OpenWireRootUnit__.SweepValue.OutputPin))
+end
+/>
+</UNIT>
